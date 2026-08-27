@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DAB — friends-only map, chat and calls with no server</title>
+<meta name="description" content="DAB is an Android app for friends-only location sharing on a fog-of-war map, with end-to-end encrypted chat and calls. No backend, no account, no tracking.">
+<meta name="theme-color" content="#061426">
+<link rel="icon" href="assets/app-icon.png">
+<meta property="og:title" content="DAB — friends-only map, chat and calls with no server">
+<meta property="og:description" content="Fog-of-war map, encrypted chat, encrypted calls. No accounts, no backend, no analytics. Download the APK.">
+<meta property="og:image" content="assets/app-icon.png">
+<meta property="og:type" content="website">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  :root{
+    --ink:#061426; --ink2:#0a1c30; --card:#0d2338;
+    --line:rgba(255,255,255,.10); --line2:rgba(255,255,255,.06);
+    --text:#e9f0f9; --muted:#94a9c2; --dim:#6f849c;
+    --blue:#2f6bff; --blue2:#5b8cff; --green:#34d399; --amber:#f5b451;
+    --radius:16px;
+    --wrap:1120px;
+  }
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--ink); color:var(--text);
+    font-family:ui-sans-serif,-apple-system,"Segoe UI",Roboto,Inter,Helvetica,Arial,sans-serif;
+    font-size:17px; line-height:1.6; letter-spacing:-.005em;
+    -webkit-font-smoothing:antialiased;
+  }
+  body::before{
+    content:""; position:fixed; inset:0; pointer-events:none; z-index:0;
+    background:
+      radial-gradient(900px 620px at 78% -8%, rgba(47,107,255,.20), transparent 62%),
+      radial-gradient(760px 520px at 6% 4%, rgba(52,211,153,.09), transparent 60%);
+  }
+  .wrap{width:min(var(--wrap),calc(100% - 44px)); margin-inline:auto; position:relative; z-index:1}
+  a{color:var(--blue2); text-decoration:none}
+  a:hover{text-decoration:underline}
+  h1,h2,h3{line-height:1.15; letter-spacing:-.028em; margin:0}
+  code{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace; font-size:.88em;
+       background:rgba(255,255,255,.07); border:1px solid var(--line2); padding:.14em .42em; border-radius:6px}
+
+  /* ---------- header ---------- */
+  header{position:sticky; top:0; z-index:20; backdrop-filter:blur(14px);
+         background:rgba(6,20,38,.78); border-bottom:1px solid var(--line2)}
+  .bar{display:flex; align-items:center; gap:16px; height:64px}
+  .brand{display:flex; align-items:center; gap:11px; font-weight:800; font-style:italic;
+         font-size:22px; letter-spacing:.01em; color:var(--text)}
+  .brand:hover{text-decoration:none}
+  .brand img{width:30px; height:30px; border-radius:8px; display:block}
+  .bar nav{margin-left:auto; display:flex; align-items:center; gap:24px; font-size:15px}
+  .bar nav a{color:var(--muted)}
+  .bar nav a:hover{color:var(--text); text-decoration:none}
+  .bar .btn-sm{
+    background:var(--blue); color:#fff; font-weight:650; font-size:14.5px;
+    padding:9px 16px; border-radius:10px;
+  }
+  .bar .btn-sm:hover{background:#3f79ff; text-decoration:none}
+  @media (max-width:760px){ .bar nav a.hide-sm{display:none} }
+
+  /* ---------- hero ---------- */
+  .hero{display:grid; grid-template-columns:1.08fr .92fr; gap:56px; align-items:center;
+        padding:84px 0 76px}
+  .eyebrow{display:inline-flex; align-items:center; gap:9px; font-size:13.5px; font-weight:600;
+    color:var(--muted); border:1px solid var(--line); background:rgba(255,255,255,.03);
+    padding:6px 13px; border-radius:999px; margin-bottom:24px}
+  .eyebrow .dot{width:7px; height:7px; border-radius:50%; background:var(--green);
+    box-shadow:0 0 0 3px rgba(52,211,153,.18)}
+  h1{font-size:clamp(40px,5.6vw,62px); font-weight:820}
+  h1 .grad{background:linear-gradient(96deg,#7fa6ff,#2f6bff 55%,#34d399);
+    -webkit-background-clip:text; background-clip:text; color:transparent}
+  .lede{color:var(--muted); font-size:19.5px; margin:22px 0 0; max-width:52ch}
+  .cta{display:flex; flex-wrap:wrap; gap:14px; align-items:center; margin-top:34px}
+  .btn{
+    display:inline-flex; align-items:center; gap:11px; font-weight:680; font-size:16.5px;
+    padding:15px 25px; border-radius:13px; border:1px solid transparent; cursor:pointer;
+    transition:transform .12s ease, background .15s ease, border-color .15s ease;
+  }
+  .btn:hover{text-decoration:none; transform:translateY(-1px)}
+  .btn-primary{background:var(--blue); color:#fff; box-shadow:0 12px 30px -12px rgba(47,107,255,.85)}
+  .btn-primary:hover{background:#3f79ff}
+  .btn-ghost{background:rgba(255,255,255,.045); border-color:var(--line); color:var(--text)}
+  .btn-ghost:hover{border-color:rgba(255,255,255,.24); background:rgba(255,255,255,.075)}
+  .btn svg{flex:none}
+  .meta{margin-top:15px; font-size:14px; color:var(--dim)}
+  .meta b{color:var(--muted); font-weight:600}
+  .meta .sep{opacity:.45; margin:0 9px}
+
+  /* ---------- phone mock ---------- */
+  .shot{display:flex; justify-content:center}
+  .phone{width:min(300px,78vw); filter:drop-shadow(0 40px 70px rgba(0,0,0,.6))}
+
+  /* ---------- sections ---------- */
+  section{padding:78px 0; position:relative; z-index:1}
+  .rule{border:0; border-top:1px solid var(--line2); margin:0}
+  .sec-head{max-width:62ch; margin-bottom:44px}
+  .sec-head h2{font-size:clamp(27px,3.2vw,36px); font-weight:760}
+  .sec-head p{color:var(--muted); margin:15px 0 0; font-size:18px}
+  .kicker{font-size:13px; font-weight:700; letter-spacing:.10em; text-transform:uppercase;
+    color:var(--blue2); margin-bottom:14px}
+
+  .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px}
+  .card{background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.018));
+    border:1px solid var(--line); border-radius:var(--radius); padding:26px}
+  .card h3{font-size:18.5px; font-weight:700; margin-bottom:10px}
+  .card p{color:var(--muted); margin:0; font-size:15.5px; line-height:1.62}
+  .ico{width:40px; height:40px; border-radius:11px; display:grid; place-items:center;
+    background:rgba(47,107,255,.15); border:1px solid rgba(47,107,255,.3); margin-bottom:17px}
+  .ico svg{display:block}
+
+  /* ---------- steps ---------- */
+  .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:20px; counter-reset:s}
+  .step{position:relative; padding:26px; border:1px solid var(--line); border-radius:var(--radius);
+    background:rgba(255,255,255,.025)}
+  .step::before{counter-increment:s; content:counter(s);
+    display:grid; place-items:center; width:32px; height:32px; border-radius:9px;
+    background:var(--blue); color:#fff; font-weight:750; font-size:15px; margin-bottom:16px}
+  .step h3{font-size:17.5px; margin-bottom:9px}
+  .step p{color:var(--muted); font-size:15.5px; margin:0}
+
+  /* ---------- install ---------- */
+  .split{display:grid; grid-template-columns:1fr 1fr; gap:44px; align-items:start}
+  ol.install{margin:0; padding-left:0; list-style:none; counter-reset:i}
+  ol.install li{position:relative; padding-left:44px; margin-bottom:22px}
+  ol.install li::before{counter-increment:i; content:counter(i);
+    position:absolute; left:0; top:1px; width:28px; height:28px; border-radius:8px;
+    display:grid; place-items:center; font-size:14px; font-weight:750;
+    background:rgba(47,107,255,.16); border:1px solid rgba(47,107,255,.34); color:var(--blue2)}
+  ol.install b{display:block; font-weight:650; margin-bottom:3px}
+  ol.install span{color:var(--muted); font-size:15.5px}
+
+  .note{border:1px solid var(--line); border-left:3px solid var(--amber);
+    background:rgba(245,180,81,.06); border-radius:12px; padding:20px 22px}
+  .note h3{font-size:16px; margin-bottom:9px; color:var(--amber)}
+  .note p{margin:0 0 11px; color:var(--muted); font-size:15.5px}
+  .note p:last-child{margin-bottom:0}
+
+  /* ---------- honesty list ---------- */
+  .honest{display:grid; grid-template-columns:1fr 1fr; gap:14px 34px; margin:0; padding:0; list-style:none}
+  .honest li{display:flex; gap:12px; align-items:flex-start; color:var(--muted); font-size:15.5px}
+  .honest svg{flex:none; margin-top:4px}
+
+  /* ---------- download strip ---------- */
+  .strip{border:1px solid var(--line); border-radius:22px; padding:52px 44px; text-align:center;
+    background:radial-gradient(700px 300px at 50% 0%, rgba(47,107,255,.20), transparent 68%),
+               linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.015))}
+  .strip h2{font-size:clamp(26px,3.4vw,36px); font-weight:780}
+  .strip p{color:var(--muted); margin:15px auto 30px; max-width:50ch; font-size:17.5px}
+
+  footer{border-top:1px solid var(--line2); padding:36px 0 54px; color:var(--dim); font-size:14.5px}
+  .foot{display:flex; flex-wrap:wrap; gap:16px 26px; align-items:center}
+  .foot nav{margin-left:auto; display:flex; gap:22px; flex-wrap:wrap}
+  .foot a{color:var(--muted)}
+
+  @media (max-width:940px){
+    .hero{grid-template-columns:1fr; gap:44px; padding:56px 0 52px}
+    .shot{order:-1}
+    .grid,.steps{grid-template-columns:1fr}
+    .split{grid-template-columns:1fr; gap:32px}
+    .honest{grid-template-columns:1fr}
+    section{padding:58px 0}
+    .strip{padding:40px 24px}
+    body{font-size:16.5px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#top"><img src="assets/app-icon.png" alt="">DAB</a>
+    <nav>
+      <a href="#features" class="hide-sm">Features</a>
+      <a href="#how" class="hide-sm">How it works</a>
+      <a href="#install" class="hide-sm">Install</a>
+      <a href="https://github.com/Mild-Solvent/DAB">GitHub</a>
+      <a class="btn-sm" href="https://github.com/Mild-Solvent/DAB/releases/latest/download/DAB.apk" data-dl>Get the APK</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <div class="wrap hero">
+    <div>
+      <span class="eyebrow"><span class="dot"></span>Android · <span data-version>v0.3.0 alpha</span></span>
+      <h1>Share where you are with <span class="grad">friends only</span>. No server in the middle.</h1>
+      <p class="lede">
+        DAB is a map that stays dark until you walk it. Your friends appear on it, you can
+        message and call them — and none of it passes through a backend, an account,
+        or an analytics SDK, because there isn't one.
+      </p>
+      <div class="cta">
+        <a class="btn btn-primary" href="https://github.com/Mild-Solvent/DAB/releases/latest/download/DAB.apk" data-dl>
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M4 20h16"/></svg>
+          Download APK
+        </a>
+        <a class="btn btn-ghost" href="https://github.com/Mild-Solvent/DAB/releases">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a12 12 0 0 0-3.79 23.4c.6.1.82-.26.82-.58v-2.2c-3.34.72-4.04-1.6-4.04-1.6-.55-1.4-1.34-1.77-1.34-1.77-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.34-5.47-5.95 0-1.32.47-2.4 1.24-3.24-.13-.3-.54-1.53.11-3.18 0 0 1.01-.32 3.3 1.24a11.5 11.5 0 0 1 6.01 0c2.29-1.56 3.3-1.24 3.3-1.24.65 1.65.24 2.88.12 3.18.77.84 1.23 1.92 1.23 3.24 0 4.62-2.8 5.64-5.48 5.94.43.37.81 1.1.81 2.22v3.29c0 .32.21.69.83.57A12 12 0 0 0 12 .5Z"/></svg>
+          All releases
+        </a>
+      </div>
+      <p class="meta">
+        <b data-size>~177 MB</b><span class="sep">·</span>Android 8+<span class="sep">·</span>
+        <b data-date>updated regularly</b><span class="sep">·</span>no Play Store account needed
+      </p>
+    </div>
+
+    <div class="shot">
+      <!-- Illustration of the app, not a real capture: no real place is shown. -->
+      <svg class="phone" viewBox="0 0 300 604" role="img" aria-label="Illustration of the DAB map with fog of war covering unexplored streets">
+        <defs>
+          <clipPath id="scr"><rect x="10" y="10" width="280" height="584" rx="30"/></clipPath>
+          <radialGradient id="clear" cx="50%" cy="47%" r="50%">
+            <stop offset="52%" stop-color="#fff" stop-opacity="0"/>
+            <stop offset="76%" stop-color="#fff" stop-opacity=".72"/>
+            <stop offset="100%" stop-color="#fff" stop-opacity="1"/>
+          </radialGradient>
+          <mask id="fogmask">
+            <rect x="0" y="0" width="300" height="604" fill="url(#clear)"/>
+          </mask>
+          <linearGradient id="frame" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#2b3f57"/><stop offset="1" stop-color="#101f31"/>
+          </linearGradient>
+        </defs>
+
+        <rect x="2" y="2" width="296" height="600" rx="38" fill="url(#frame)"/>
+        <rect x="8" y="8" width="284" height="588" rx="32" fill="#061426"/>
+
+        <g clip-path="url(#scr)">
+          <!-- map base -->
+          <rect x="10" y="10" width="280" height="584" fill="#eef1f4"/>
+          <!-- parks -->
+          <path d="M150 120h96v104h-96z" fill="#dcecd8"/>
+          <path d="M24 380h74v96H24z" fill="#e3ece2"/>
+          <circle cx="198" cy="172" r="26" fill="#d2e6cc"/>
+          <!-- building blocks -->
+          <g fill="#e2e5e9">
+            <rect x="26" y="120" width="52" height="42" rx="3"/>
+            <rect x="88" y="120" width="46" height="42" rx="3"/>
+            <rect x="26" y="176" width="52" height="60" rx="3"/>
+            <rect x="88" y="176" width="46" height="60" rx="3"/>
+            <rect x="26" y="252" width="108" height="52" rx="3"/>
+            <rect x="150" y="252" width="60" height="52" rx="3"/>
+            <rect x="222" y="252" width="52" height="52" rx="3"/>
+            <rect x="26" y="320" width="72" height="40" rx="3"/>
+            <rect x="112" y="320" width="70" height="40" rx="3"/>
+            <rect x="196" y="320" width="78" height="40" rx="3"/>
+            <rect x="112" y="380" width="70" height="96" rx="3"/>
+            <rect x="196" y="380" width="78" height="96" rx="3"/>
+            <rect x="26" y="492" width="108" height="56" rx="3"/>
+            <rect x="150" y="492" width="124" height="56" rx="3"/>
+          </g>
+          <!-- streets -->
+          <g stroke="#ffffff" stroke-width="9" stroke-linecap="square">
+            <path d="M10 170h280M10 244h280M10 312h280M10 372h280M10 484h280"/>
+            <path d="M84 10v584M142 10v584M214 10v584"/>
+          </g>
+          <g stroke="#f6c66a" stroke-width="11" stroke-linecap="square" opacity=".85">
+            <path d="M142 10v584"/>
+          </g>
+
+          <!-- fog of war -->
+          <g mask="url(#fogmask)">
+            <rect x="10" y="10" width="280" height="584" fill="#0a1c30" opacity=".93"/>
+          </g>
+
+          <!-- friend pin, inside the explored area -->
+          <g transform="translate(196 214)">
+            <circle r="15" fill="#34d399" stroke="#fff" stroke-width="3"/>
+            <path d="M-4 1.5 -1 5 5-2.5" stroke="#06381f" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+          <!-- you -->
+          <circle cx="128" cy="300" r="26" fill="#2f6bff" opacity=".16"/>
+          <circle cx="128" cy="300" r="11" fill="#2f6bff" stroke="#fff" stroke-width="4"/>
+
+          <!-- app chrome: top bar -->
+          <rect x="10" y="10" width="280" height="62" fill="#061426"/>
+          <text x="26" y="50" font-family="ui-sans-serif,Segoe UI,Roboto,Arial" font-size="23"
+                font-weight="800" font-style="italic" fill="#e9f0f9" letter-spacing="1">DAB</text>
+          <circle cx="258" cy="41" r="17" fill="none" stroke="#34d399" stroke-width="2.2"/>
+          <circle cx="272" cy="53" r="4" fill="#34d399"/>
+          <g stroke="#34d399" stroke-width="2" fill="none" stroke-linecap="round">
+            <path d="M251 44l6-6M257 47l6-6"/><path d="M255 34a6 6 0 0 1 8 0"/>
+          </g>
+
+          <!-- right rail buttons -->
+          <g>
+            <circle cx="252" cy="424" r="21" fill="#0d2338" stroke="rgba(255,255,255,.12)"/>
+            <g stroke="#dbe6f5" stroke-width="2" fill="none" stroke-linecap="round">
+              <path d="M245 428l6-6M252 431l6-6"/><path d="M249 415a7 7 0 0 1 9 0"/>
+            </g>
+            <circle cx="252" cy="474" r="21" fill="#0d2338" stroke="rgba(255,255,255,.12)"/>
+            <g fill="#dbe6f5"><circle cx="247" cy="469" r="4.6"/><circle cx="257" cy="470" r="3.6"/>
+              <path d="M240 482c0-4 3.2-6.4 7-6.4s7 2.4 7 6.4z"/><path d="M254 482c0-3 2-5 4-5s4 1.6 4 5z"/></g>
+            <circle cx="252" cy="524" r="21" fill="#0d2338" stroke="rgba(255,255,255,.12)"/>
+            <g stroke="#dbe6f5" stroke-width="2" fill="none" stroke-linejoin="round">
+              <path d="M243 517l6-2 6 2 6-2v14l-6 2-6-2-6 2z"/><path d="M249 515v14M255 517v14"/>
+            </g>
+            <circle cx="252" cy="572" r="23" fill="#2f6bff" stroke="#fff" stroke-width="3"/>
+            <g stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round">
+              <circle cx="252" cy="572" r="7"/><path d="M252 558v5M252 581v5M238 572h5M261 572h5"/>
+            </g>
+          </g>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <hr class="rule">
+
+  <section id="features">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">What it does</p>
+        <h2>A private map, and the two ways you actually talk to people on it.</h2>
+        <p>Everything below runs between phones. There is no DAB server to sign into, go down, get breached, or change its mind about your data later.</p>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5b8cff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3 3 5.5v15L9 18l6 3 6-2.5v-15L15 6Z"/><path d="M9 3v15M15 6v15"/></svg></div>
+          <h3>Fog of war</h3>
+          <p>The world starts covered. Streets you physically walk stay uncovered, in 180 m cells stored on your phone. It turns a map into something you fill in.</p>
+        </div>
+        <div class="card">
+          <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5b8cff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.4 7-11a7 7 0 1 0-14 0c0 5.6 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg></div>
+          <h3>Friends, live or last-seen</h3>
+          <p>When you are both online, positions stream phone-to-phone over WebRTC. When they are offline, you still see their last known position — encrypted, waiting on a public relay.</p>
+        </div>
+        <div class="card">
+          <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5b8cff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/></svg></div>
+          <h3>Encrypted chat, photos, files</h3>
+          <p>Messages live on the two phones and nowhere else. Attachments are chunked and pushed down the direct channel, or through expiring encrypted events when it is closed.</p>
+        </div>
+        <div class="card">
+          <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5b8cff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg></div>
+          <h3>Audio and video calls</h3>
+          <p>One-to-one calls signalled over encrypted events and carried by DTLS-SRTP. STUN only — if a direct path cannot be made, DAB tells you instead of quietly routing you through someone else's relay.</p>
+        </div>
+        <div class="card">
+          <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5b8cff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17h18M6 21h12"/><path d="M4.5 3h15A1.5 1.5 0 0 1 21 4.5V13H3V4.5A1.5 1.5 0 0 1 4.5 3Z"/></svg></div>
+          <h3>Works offline</h3>
+          <p>Download the area you are in and the map keeps rendering with no connectivity at all. Vector tiles come from OpenFreeMap — no API key, no quota, no signup.</p>
+        </div>
+        <div class="card">
+          <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5b8cff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="10.5" width="15" height="10" rx="2"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5"/></svg></div>
+          <h3>Text-and-calls mode</h3>
+          <p>A hard switch, not a checkbox. The map never mounts, GPS is never requested, and no position leaves the phone. Your explored map waits on disk for when you switch back.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section id="how">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">How it works</p>
+        <h2>Three moving parts, and none of them is a company.</h2>
+        <p>DAB has no backend, no TURN service, no push vendor and no analytics. It borrows free public infrastructure that only ever sees ciphertext.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <h3>Pair by QR code</h3>
+          <p>Each phone generates a keypair and keeps the secret in the OS keystore. You add a friend by scanning their code, or by sending the pairing link through any messenger you already use.</p>
+        </div>
+        <div class="step">
+          <h3>Relays carry the ciphertext</h3>
+          <p>Location, messages and call setup are published as end-to-end encrypted events to free public Nostr relays. A relay sees an encrypted blob and nothing else — not the content, not who it is for.</p>
+        </div>
+        <div class="step">
+          <h3>Phones talk directly</h3>
+          <p>When both of you are online, a WebRTC data channel opens between the two devices and positions, messages and calls take the direct path instead.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section id="install">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">Install &amp; update</p>
+        <h2>Sideload once, then updating is one tap.</h2>
+        <p>DAB is not on the Play Store. Every build is published here as a release, and every release is signed with the same key — so a new APK installs straight over the old one and keeps your friends, chats and explored map.</p>
+      </div>
+
+      <div class="split">
+        <ol class="install">
+          <li><b>Download the APK on your phone</b><span>Tap the download button on this page from the phone itself. Your browser will warn you about the file type — that is normal for anything outside the Play Store.</span></li>
+          <li><b>Allow installs from your browser</b><span>Android asks once, per app. Settings → Apps → your browser → <code>Install unknown apps</code>.</span></li>
+          <li><b>Open the file and install</b><span>Play Protect may offer to scan it. Let it, or skip it — either way the install completes.</span></li>
+          <li><b>To update later, install the newer APK on top</b><span>No uninstall, no data loss, no re-pairing. Same button, same page.</span></li>
+        </ol>
+
+        <div class="note">
+          <h3>Read this before you trust it with anything</h3>
+          <p>DAB is <b>alpha software built for a handful of friends</b>, not an audited product. It has not been through a security review.</p>
+          <p>The APK is signed with a development key, so your phone will treat it as an app from an unknown developer — that is expected here, and it is exactly why you should only install it if you know where this build came from.</p>
+          <p>Peers in a call or a direct transfer can see each other's IP address, which is inherent to peer-to-peer and not something the encryption hides.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section id="privacy">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">Privacy</p>
+        <h2>What it protects, stated plainly.</h2>
+        <p>The honest version, written from reading the code rather than the intent — the full document is in the repository.</p>
+      </div>
+
+      <ul class="honest">
+        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg><span>Message content, attachments and call media are end-to-end encrypted.</span></li>
+        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg><span>Who you talk to is wrapped too — relays cannot read the participants off an event.</span></li>
+        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg><span>No account, no email, no phone number, no analytics, no crash reporting.</span></li>
+        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg><span>Notifications show a friend's name and "New encrypted message" — never the body.</span></li>
+        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#f5b451" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v5M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg><span>Relays and call peers see your IP address and the timing of your traffic.</span></li>
+        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#f5b451" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v5M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg><span>With no push service, a killed iOS app cannot be woken for an incoming call.</span></li>
+      </ul>
+
+      <p style="margin-top:30px"><a href="https://github.com/Mild-Solvent/DAB/blob/main/PRIVACY.md">Read the full privacy write-up →</a></p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="strip">
+        <h2>Get the latest build</h2>
+        <p>One APK, <span data-size>~177 MB</span>, Android 8 and up. Install it over whatever version you have.</p>
+        <a class="btn btn-primary" href="https://github.com/Mild-Solvent/DAB/releases/latest/download/DAB.apk" data-dl>
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M4 20h16"/></svg>
+          Download DAB <span data-version>v0.3.0 alpha</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>DAB — built for friends, not for scale.</span>
+    <nav>
+      <a href="https://github.com/Mild-Solvent/DAB">Source</a>
+      <a href="https://github.com/Mild-Solvent/DAB/releases">Releases</a>
+      <a href="https://github.com/Mild-Solvent/DAB/blob/main/PRIVACY.md">Privacy</a>
+      <a href="https://openfreemap.org">Tiles by OpenFreeMap</a>
+      <a href="https://www.openstreetmap.org/copyright">© OpenStreetMap contributors</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+// Fill version / size / date from the latest GitHub release. The static text is the fallback.
+(function () {
+  var api = 'https://api.github.com/repos/Mild-Solvent/DAB/releases/latest';
+  fetch(api, { headers: { Accept: 'application/vnd.github+json' } })
+    .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
+    .then(function (rel) {
+      var apk = (rel.assets || []).filter(function (a) { return /\.apk$/i.test(a.name); })
+        .sort(function (a, b) { return b.size - a.size; })[0];
+
+      var tag = (rel.tag_name || '').replace(/^v/, '');
+      if (tag) {
+        var label = 'v' + tag.replace(/-alpha$/, ' alpha');
+        [].forEach.call(document.querySelectorAll('[data-version]'), function (el) { el.textContent = label; });
+      }
+      if (apk) {
+        var mb = Math.round(apk.size / 1048576);
+        [].forEach.call(document.querySelectorAll('[data-size]'), function (el) { el.textContent = mb + ' MB'; });
+        [].forEach.call(document.querySelectorAll('[data-dl]'), function (el) {
+          el.setAttribute('href', apk.browser_download_url);
+        });
+      }
+      if (rel.published_at) {
+        var d = new Date(rel.published_at).toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' });
+        [].forEach.call(document.querySelectorAll('[data-date]'), function (el) { el.textContent = d; });
+      }
+    })
+    .catch(function () { /* keep the fallback text and the /releases/latest/download link */ });
+})();
+</script>
+</body>
+</html>
