@@ -27,11 +27,16 @@ fall back to free public relays that only ever see ciphertext.
    *Install unknown apps*).
 3. Open the downloaded file and install.
 
-**Updating:** download the newer APK and install it over the old one. Every release is
-signed with the same key, so friends, chats and the explored map survive the update —
-no uninstall needed.
+**Updating:** the app tells you itself from this version on. DAB checks GitHub for a
+newer release at most once a day while you have it open, and offers the download when
+there is one; a **Check now** button and a toggle to switch the automatic check off both
+live in Settings → Updates. The check sends no identifiers, but like any request it
+shows your IP to GitHub — [`PRIVACY.md`](PRIVACY.md) spells that out. Downloading from
+this repo by hand still works, and is still how you get the first install. Either way,
+install the newer APK straight over the old one: every release is signed with the same
+key, so friends, chats and the explored map survive the update — no uninstall needed.
 
-Requires Android 8+. iOS is supported by the source but is not distributed here.
+Requires Android 7+ (minSdk 24). iOS is supported by the source but is not distributed here.
 
 ## Honest limits
 

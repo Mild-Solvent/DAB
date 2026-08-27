@@ -169,6 +169,7 @@ This is separate from the relay problem and is not solved by any encryption.
 | **Google STUN** (`stun.l.google.com`, `stun1`) | constantly — every NAT discovery |
 | **Cloudflare STUN** | during calls only |
 | **The relays** | whenever the app is connected — and there are six of them now, not three, because relay rotation widened this |
+| **GitHub** (`api.github.com`) | the update check — at most once a day, and only while you leave it switched on. See below |
 | **The relays — content?** | no. ICE candidates travel inside the encrypted payload |
 
 The "every friend, continuously" part surprises people. The live-sync layer opens
@@ -213,6 +214,63 @@ adding an anonymous, unaccountable observer rather than removing one. Free VPNs
 have the same problem for the same reason: exit bandwidth costs money, so a free
 provider monetises somehow. Proton's free tier and Cloudflare WARP are the
 defensible exceptions.
+
+---
+
+## The update check
+
+Everything above is about servers the app cannot avoid: relays that carry the
+mail, STUN boxes that find a path to a friend. The update check is different. It
+is the one routine request DAB makes to a company, and nothing breaks if it never
+happens.
+
+**What it does.** At most once every 24 hours, while the app is open and in the
+foreground, DAB makes a single HTTPS GET to:
+
+```
+https://api.github.com/repos/Mild-Solvent/DAB/releases/latest
+```
+
+It reads the version number, and offers you the download if that number is newer
+than yours. There is no background job — the phone never wakes up to do this —
+and no second request unless you accept. **Check now** in Settings → Updates does
+the same thing on demand.
+
+**What it sends.** Nothing about you. No pubkey, no friend list, no location, no
+device identifier. The request is the same bytes from every phone that makes it.
+But it is still an HTTP request, so it carries what every HTTP request carries.
+
+**What GitHub gets.**
+
+| What | How good is it |
+|---|---|
+| **Your IP address** | the same identifier the relays get, with the same caveats — household-level on home WiFi, carrier-level on CGNAT, line-level on IPv6 |
+| **That this device runs DAB** | inferred, not stated. Nothing in the request says "DAB". But almost nothing except a DAB client polls one obscure repo's `releases/latest` from a phone, every day — the pattern is the signal |
+| **A coarse daily heartbeat** | at most one hit per app-day, so "this address opened DAB today" is legible. Not when, not for how long, not what you did |
+| **Roughly how many people run DAB** | request volume across everyone. This is the thing GitHub is genuinely well placed to know, and you cannot opt out of contributing to it except by turning the check off |
+
+What GitHub does **not** get is any link to a pubkey, a friend, a message or a
+place. It sees an address asking a public question, exactly like a browser
+loading the releases page. No cookie, no login, no authentication.
+
+Two honest points. First, this opens no door that was shut: downloading an APK
+from the releases page by hand already showed GitHub your address. The check just
+walks through that door on a schedule instead of when you decide to. Second, a
+schedule is the worse half of that. A daily hit from a residential address, over
+months, is a presence log — and it is one nobody sits down and consents to each
+time.
+
+**Turning it off.** Settings → Updates → **Check automatically**, one toggle. It
+ships **on**. With it off the request is never made — not on launch, not on a
+timer, not at all — until you press **Check now** yourself, which performs exactly
+one check and then stops. Nothing else in the app changes; you go back to noticing
+new releases the way you did before, on the releases page.
+
+The download is handed to the system browser, so the bytes arrive outside DAB and
+GitHub sees that fetch the way it sees any download. The app installs nothing
+itself — Android's package installer asks you, as it does for any sideloaded APK.
+Installing over the old version keeps friends, chats and the explored map,
+because every release is signed with the same key.
 
 ---
 
@@ -294,6 +352,16 @@ And for the network side:
 > connections possible. On home WiFi that identifies your household. Use a VPN if
 > that matters — or Orbot with relay-only mode, which hides it completely but
 > disables calls.
+
+And for the update check, which is the one contact the user can actually switch
+off — so the disclosure has to sit next to the switch, in Settings → Updates,
+where it now reads:
+
+> Asks GitHub about once a day whether a newer DAB exists — nothing about you is
+> sent. Turned off, DAB never makes a network call for updates at all.
+
+That is the whole truth of it except for the IP address, which the section above
+covers and which no wording in a toggle caption can undo.
 
 A flat "fully private" claim would be an overclaim today, and alpha testers are
 exactly the people who would check.

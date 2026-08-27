@@ -184,7 +184,7 @@
 
   <div class="wrap hero">
     <div>
-      <span class="eyebrow"><span class="dot"></span>Android · <span data-version>v0.3.0 alpha</span></span>
+      <span class="eyebrow"><span class="dot"></span>Android · <span data-version>v0.4.0</span></span>
       <h1>Share where you are with <span class="grad">friends only</span>. No server in the middle.</h1>
       <p class="lede">
         DAB is a map that stays dark until you walk it. Your friends appear on it, you can
@@ -202,7 +202,7 @@
         </a>
       </div>
       <p class="meta">
-        <b data-size>~177 MB</b><span class="sep">·</span>Android 8+<span class="sep">·</span>
+        <b data-size>169 MB</b><span class="sep">·</span>Android 7+<span class="sep">·</span>
         <b data-date>updated regularly</b><span class="sep">·</span>no Play Store account needed
       </p>
     </div>
@@ -359,8 +359,8 @@
     <div class="wrap">
       <div class="sec-head">
         <p class="kicker">How it works</p>
-        <h2>Three moving parts, and none of them is a company.</h2>
-        <p>DAB has no backend, no TURN service, no push vendor and no analytics. It borrows free public infrastructure that only ever sees ciphertext.</p>
+        <h2>Three moving parts carry your data, and none of them is a company.</h2>
+        <p>DAB has no backend, no TURN service, no push vendor and no analytics. It borrows free public infrastructure that only ever sees ciphertext. The one routine request it makes to a company server is the update check below — it carries nothing about you, and it switches off.</p>
       </div>
 
       <div class="steps">
@@ -395,7 +395,7 @@
           <li><b>Download the APK on your phone</b><span>Tap the download button on this page from the phone itself. Your browser will warn you about the file type — that is normal for anything outside the Play Store.</span></li>
           <li><b>Allow installs from your browser</b><span>Android asks once, per app. Settings → Apps → your browser → <code>Install unknown apps</code>.</span></li>
           <li><b>Open the file and install</b><span>Play Protect may offer to scan it. Let it, or skip it — either way the install completes.</span></li>
-          <li><b>To update later, install the newer APK on top</b><span>No uninstall, no data loss, no re-pairing. Same button, same page.</span></li>
+          <li><b>After that, DAB tells you about updates itself</b><span>It asks GitHub for the latest release at most once a day, while you have the app open, and offers you the download when there is a newer one. Install it straight over the old one — no uninstall, no data loss, no re-pairing. One toggle in Settings → Updates switches the automatic check off, and this page stays the fallback.</span></li>
         </ol>
 
         <div class="note">
@@ -403,6 +403,7 @@
           <p>DAB is <b>alpha software built for a handful of friends</b>, not an audited product. It has not been through a security review.</p>
           <p>The APK is signed with a development key, so your phone will treat it as an app from an unknown developer — that is expected here, and it is exactly why you should only install it if you know where this build came from.</p>
           <p>Peers in a call or a direct transfer can see each other's IP address, which is inherent to peer-to-peer and not something the encryption hides.</p>
+          <p>The update check is the app's one routine request to a company server: it carries no identifiers, but it shows your IP address to GitHub about once a day until you switch it off.</p>
         </div>
       </div>
     </div>
@@ -425,6 +426,7 @@
         <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg><span>Notifications show a friend's name and "New encrypted message" — never the body.</span></li>
         <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#f5b451" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v5M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg><span>Relays and call peers see your IP address and the timing of your traffic.</span></li>
         <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#f5b451" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v5M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg><span>With no push service, a killed iOS app cannot be woken for an incoming call.</span></li>
+        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#f5b451" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v5M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg><span>The daily update check shows your IP to GitHub, until you switch it off.</span></li>
       </ul>
 
       <p style="margin-top:30px"><a href="https://github.com/Mild-Solvent/DAB/blob/main/PRIVACY.md">Read the full privacy write-up →</a></p>
@@ -435,10 +437,10 @@
     <div class="wrap">
       <div class="strip">
         <h2>Get the latest build</h2>
-        <p>One APK, <span data-size>~177 MB</span>, Android 8 and up. Install it over whatever version you have.</p>
+        <p>One APK, <span data-size>169 MB</span>, Android 7 and up. Install it over whatever version you have.</p>
         <a class="btn btn-primary" href="https://github.com/Mild-Solvent/DAB/releases/latest/download/DAB.apk" data-dl>
           <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M4 20h16"/></svg>
-          Download DAB <span data-version>v0.3.0 alpha</span>
+          Download DAB <span data-version>v0.4.0</span>
         </a>
       </div>
     </div>
