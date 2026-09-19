@@ -331,6 +331,15 @@ Worth stating so the app never overclaims:
   mixnet addresses it. **This is now the strongest attack on the relay path** —
   gift wrapping removed everything that was easier than it.
 - **Total volume.** How much you use the app.
+- **That you are moving.** Since 0.5.0 DAB samples GPS densely while you are
+  actually travelling and sleeps while you are not, and it publishes a little
+  more often while moving — at most one location event every two minutes, and
+  only after 250 m. So the *rate* of your location events, which a relay can
+  see without decrypting any of them, tells it roughly when you are on the move
+  rather than sitting still. The positions themselves stay encrypted to your
+  friends; the cadence does not. Turning **Follow my movement** off in
+  Settings restores a flat one-event-per-interval rate, which leaks less and
+  draws a worse trail. Neither setting changes who can read the contents.
 - **Already-scraped history.** Public data that has been archived stays
   archived, and it is archived under the old scheme, with pubkeys and readable
   labels intact. Gift wrapping caps what accumulates from here; it cannot
