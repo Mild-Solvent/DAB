@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DAB Roadmap</title>
+<meta name="description" content="Where DAB is going: an official store release, a decentralized node network anyone can run, and iOS. What is done, what is next, and what we will not build.">
+<meta name="theme-color" content="#061426">
+<link rel="icon" href="assets/app-icon.png">
+<meta property="og:title" content="DAB Roadmap">
+<meta property="og:description" content="The road to 1.0, a decentralized node network anyone can run, and iOS.">
+<meta property="og:image" content="assets/app-icon.png">
+<meta property="og:type" content="website">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  :root{
+    --ink:#061426; --ink2:#0a1c30; --card:#0d2338;
+    --line:rgba(255,255,255,.10); --line2:rgba(255,255,255,.06);
+    --text:#e9f0f9; --muted:#94a9c2; --dim:#6f849c;
+    --blue:#2f6bff; --blue2:#5b8cff; --green:#34d399; --amber:#f5b451; --violet:#a78bfa;
+    --radius:16px;
+    --wrap:1120px;
+  }
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--ink); color:var(--text);
+    font-family:ui-sans-serif,-apple-system,"Segoe UI",Roboto,Inter,Helvetica,Arial,sans-serif;
+    font-size:17px; line-height:1.6; letter-spacing:-.005em;
+    -webkit-font-smoothing:antialiased;
+  }
+  body::before{
+    content:""; position:fixed; inset:0; pointer-events:none; z-index:0;
+    background:
+      radial-gradient(900px 620px at 78% -8%, rgba(47,107,255,.20), transparent 62%),
+      radial-gradient(760px 520px at 6% 4%, rgba(52,211,153,.09), transparent 60%);
+  }
+  .wrap{width:min(var(--wrap),calc(100% - 32px)); margin-inline:auto; position:relative; z-index:1}
+  a{color:var(--blue2); text-decoration:none}
+  a:hover{text-decoration:underline}
+  h1,h2,h3{line-height:1.15; letter-spacing:-.028em; margin:0}
+
+  /* ---------- header ---------- */
+  header{position:sticky; top:0; z-index:20; backdrop-filter:blur(14px);
+         background:rgba(6,20,38,.78); border-bottom:1px solid var(--line2)}
+  .bar{display:flex; align-items:center; gap:16px; height:64px}
+  .brand{display:flex; align-items:center; gap:11px; font-weight:800; font-style:italic;
+         font-size:22px; letter-spacing:.01em; color:var(--text)}
+  .brand:hover{text-decoration:none}
+  .brand img{width:30px; height:30px; border-radius:8px; display:block}
+  .bar nav{margin-left:auto; display:flex; align-items:center; gap:24px; font-size:15px}
+  .bar nav a{color:var(--muted)}
+  .bar nav a:hover{color:var(--text); text-decoration:none}
+  .bar nav a[aria-current]{color:var(--text)}
+  .bar .btn-sm{
+    background:var(--blue); color:#fff; font-weight:650; font-size:14.5px;
+    padding:9px 16px; border-radius:10px;
+  }
+  .bar .btn-sm:hover{background:#3f79ff; text-decoration:none}
+  @media (max-width:760px){ .bar nav a.hide-sm{display:none} .bar nav{gap:16px} }
+
+  /* ---------- page head ---------- */
+  .head{padding:72px 0 40px; max-width:66ch}
+  .kicker{font-size:13px; font-weight:700; letter-spacing:.10em; text-transform:uppercase;
+    color:var(--blue2); margin-bottom:14px}
+  h1{font-size:clamp(36px,5vw,54px); font-weight:820}
+  h1 .grad{background:linear-gradient(96deg,#7fa6ff,#2f6bff 55%,#34d399);
+    -webkit-background-clip:text; background-clip:text; color:transparent}
+  .lede{color:var(--muted); font-size:19px; margin:20px 0 0}
+
+  .legend{display:flex; flex-wrap:wrap; gap:10px 18px; margin-top:28px; font-size:14px; color:var(--muted)}
+  .legend span{display:inline-flex; align-items:center; gap:8px}
+
+  /* ---------- status chips ---------- */
+  .chip{display:inline-flex; align-items:center; gap:7px; font-size:12.5px; font-weight:700;
+    letter-spacing:.02em; padding:3px 10px; border-radius:999px; border:1px solid; white-space:nowrap}
+  .chip::before{content:""; width:7px; height:7px; border-radius:50%; background:currentColor}
+  .done{color:var(--green); border-color:rgba(52,211,153,.35); background:rgba(52,211,153,.08)}
+  .now{color:var(--blue2); border-color:rgba(91,140,255,.4); background:rgba(47,107,255,.10)}
+  .next{color:var(--amber); border-color:rgba(245,180,81,.35); background:rgba(245,180,81,.07)}
+  .later{color:var(--violet); border-color:rgba(167,139,250,.35); background:rgba(167,139,250,.07)}
+
+  /* ---------- timeline ---------- */
+  .timeline{position:relative; margin:18px 0 0; padding:0; list-style:none}
+  .timeline::before{content:""; position:absolute; left:15px; top:8px; bottom:8px; width:2px;
+    background:linear-gradient(180deg,var(--green),var(--blue) 30%,var(--amber) 62%,var(--violet))}
+  .phase{position:relative; padding:0 0 44px 54px}
+  .phase:last-child{padding-bottom:0}
+  .phase .pin{position:absolute; left:6px; top:4px; width:20px; height:20px; border-radius:50%;
+    background:var(--ink); border:3px solid currentColor}
+  .phase-head{display:flex; flex-wrap:wrap; align-items:center; gap:10px 14px; margin-bottom:8px}
+  .phase h2{font-size:clamp(23px,2.8vw,30px); font-weight:760}
+  .phase > p{color:var(--muted); margin:0 0 20px; max-width:68ch}
+
+  .items{display:grid; grid-template-columns:repeat(2,1fr); gap:14px}
+  .item{background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.018));
+    border:1px solid var(--line); border-radius:var(--radius); padding:20px 22px}
+  .item h3{font-size:16.5px; font-weight:700; margin-bottom:6px; display:flex; gap:10px;
+    justify-content:space-between; align-items:flex-start}
+  .item p{color:var(--muted); margin:0; font-size:15px; line-height:1.6}
+
+  /* ---------- not building ---------- */
+  section{padding:64px 0; position:relative; z-index:1}
+  .rule{border:0; border-top:1px solid var(--line2); margin:0}
+  .sec-head{max-width:62ch; margin-bottom:30px}
+  .sec-head h2{font-size:clamp(25px,3vw,33px); font-weight:760}
+  .sec-head p{color:var(--muted); margin:14px 0 0; font-size:17.5px}
+  .nots{display:grid; grid-template-columns:repeat(2,1fr); gap:14px 34px; margin:0; padding:0; list-style:none}
+  .nots li{display:flex; gap:12px; align-items:flex-start; color:var(--muted); font-size:15.5px}
+  .nots li b{color:var(--text); font-weight:650}
+  .nots svg{flex:none; margin-top:4px}
+
+  .note{border:1px solid var(--line); border-left:3px solid var(--amber);
+    background:rgba(245,180,81,.06); border-radius:12px; padding:20px 22px; margin-top:34px; max-width:78ch}
+  .note p{margin:0; color:var(--muted); font-size:15.5px}
+
+  footer{border-top:1px solid var(--line2); padding:36px 0 54px; color:var(--dim); font-size:14.5px}
+  .foot{display:flex; flex-wrap:wrap; gap:16px 26px; align-items:center}
+  .foot nav{margin-left:auto; display:flex; gap:22px; flex-wrap:wrap}
+  .foot a{color:var(--muted)}
+
+  @media (max-width:860px){
+    .items,.nots{grid-template-columns:1fr}
+    .head{padding:48px 0 28px}
+    section{padding:48px 0}
+    body{font-size:16.5px}
+    .phase{padding-left:44px}
+    .timeline::before{left:11px}
+    .phase .pin{left:2px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="./"><img src="assets/app-icon.png" alt="">DAB</a>
+    <nav>
+      <a href="./#features" class="hide-sm">Features</a>
+      <a href="./#how" class="hide-sm">How it works</a>
+      <a href="roadmap.html" aria-current="page">Roadmap</a>
+      <a href="https://github.com/Mild-Solvent/DAB" class="hide-sm">GitHub</a>
+      <a class="btn-sm" href="https://github.com/Mild-Solvent/DAB/releases/latest/download/DAB.apk">Get the APK</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <div class="head">
+      <p class="kicker">Roadmap</p>
+      <h1>From a friends-only alpha to <span class="grad">a network anyone can run</span>.</h1>
+      <p class="lede">
+        DAB works today for a small circle of friends. The next steps are to make it
+        safe to hand to strangers, get it into the app stores, and move off borrowed
+        public relays onto a network of small nodes that anyone can run and nobody
+        controls. There are no dates on this page on purpose. Things ship when they
+        are right.
+      </p>
+      <div class="legend">
+        <span><span class="chip done">Done</span></span>
+        <span><span class="chip now">In progress</span></span>
+        <span><span class="chip next">Next</span></span>
+        <span><span class="chip later">Later</span></span>
+      </div>
+    </div>
+
+    <ol class="timeline">
+
+      <!-- ============ NOW ============ -->
+      <li class="phase" style="color:var(--green)">
+        <span class="pin"></span>
+        <div class="phase-head"><h2 style="color:var(--text)">Where it is today</h2><span class="chip done">0.5 alpha</span></div>
+        <p>A working Android app, sideloaded from this site and updated in place.</p>
+        <div class="items">
+          <div class="item"><h3>Fog-of-war map <span class="chip done">Done</span></h3><p>The explored map is stored on your phone only. The trail follows how you move, and offline map areas work with no signal.</p></div>
+          <div class="item"><h3>Friends, live and last-seen <span class="chip done">Done</span></h3><p>Live positions go device to device. A friend who is offline still shows their last known spot from an encrypted event.</p></div>
+          <div class="item"><h3>Encrypted chat, files and calls <span class="chip done">Done</span></h3><p>End-to-end encrypted messages, photos and files, plus audio and video calls. Relayed copies are wiped once the message is delivered.</p></div>
+          <div class="item"><h3>Backup, restore, in-app updates <span class="chip done">Done</span></h3><p>An encrypted backup of your identity and friends, and an update check you can switch off.</p></div>
+        </div>
+      </li>
+
+      <!-- ============ 1.0 ============ -->
+      <li class="phase" style="color:var(--blue)">
+        <span class="pin"></span>
+        <div class="phase-head"><h2 style="color:var(--text)">1.0: ready for people we have never met</h2><span class="chip now">In progress</span></div>
+        <p>This is the work that turns an alpha for friends into something you can install from a store and trust.</p>
+        <div class="items">
+          <div class="item"><h3>A permanent signing key <span class="chip next">Next</span></h3><p>Alpha builds are signed with a development key. 1.0 moves to a proper release key kept offline. Existing testers get a guided backup, reinstall and restore, so nobody loses friends or chats.</p></div>
+          <div class="item"><h3>Final name and app identity <span class="chip next">Next</span></h3><p>The permanent package name and store listing. A store never lets these change, so they get settled once.</p></div>
+          <div class="item"><h3>Delete my data <span class="chip next">Next</span></h3><p>One button that wipes your keys, friends, chats and explored map from the phone, and withdraws anything still waiting on a relay.</p></div>
+          <div class="item"><h3>A plain privacy policy <span class="chip next">Next</span></h3><p>A short, store-ready policy hosted here that links to the full, code-derived <a href="https://github.com/Mild-Solvent/DAB/blob/main/PRIVACY.md">privacy write-up</a>.</p></div>
+          <div class="item"><h3>Clear consent for background location <span class="chip next">Next</span></h3><p>A screen that says exactly what is shared, with whom and how often, <em>before</em> Android asks for the permission.</p></div>
+          <div class="item"><h3>Google Play release <span class="chip next">Next</span></h3><p>A Play build that follows store rules, with updates through Play, fewer permissions and an honest Data Safety form. The sideloaded APK stays available here.</p></div>
+          <div class="item"><h3>Automated checks and crash safety <span class="chip next">Next</span></h3><p>Tests and builds run on every change. When something breaks, the app recovers cleanly and lets you export diagnostics to send yourself. There is no automatic upload.</p></div>
+          <div class="item"><h3>Independent security review <span class="chip next">Next</span></h3><p>Outside eyes on the encryption and relay layer before public users rely on it.</p></div>
+        </div>
+      </li>
+
+      <!-- ============ NETWORK ============ -->
+      <li class="phase" style="color:var(--amber)">
+        <span class="pin"></span>
+        <div class="phase-head"><h2 style="color:var(--text)">The DAB network</h2><span class="chip now">Designed · prototype running</span></div>
+        <p>
+          Today, messages to an offline friend wait on free public Nostr relays run by
+          strangers. Those relays can go down, see your IP address, and get archived by
+          indexers. The plan is to replace them with <b>dab-node</b>: a small mailbox
+          server anyone can run with one command, joined into an open network with no
+          owner, no accounts and no blockchain.
+        </p>
+        <div class="items">
+          <div class="item"><h3>dab-node <span class="chip now">In progress</span></h3><p>It accepts only encrypted DAB messages, refuses to be crawled, and forgets messages once they expire. About 256 MB of disk is enough, so you can drop it on any server you already have and not notice it.</p></div>
+          <div class="item"><h3>Mailboxes, not archives <span class="chip next">Next</span></h3><p>When your friend's phone confirms a message arrived, every node deletes its copy. Nodes only ever hold mail for phones that are offline right now. They never hold a history.</p></div>
+          <div class="item"><h3>Open, self-organising network <span class="chip next">Next</span></h3><p>Nodes find each other without a central list. Each conversation-day lands on a different group of nodes, so no single node ever sees anyone's whole history.</p></div>
+          <div class="item"><h3>Built to survive bad nodes <span class="chip next">Next</span></h3><p>We assume every node is hostile. Messages are stored on several nodes at once, nodes sign what they accept, and phones stop using nodes that lose mail.</p></div>
+          <div class="item"><h3>Your IP hidden from the nodes <span class="chip later">Later</span></h3><p>Requests take two hops. The node that sees your IP never learns which conversations you asked for, and the node that holds them never learns your IP.</p></div>
+          <div class="item"><h3>Public relays as a switch <span class="chip next">Next</span></h3><p>Off, fallback or always. Fallback keeps friends on older versions working during the move, then the default flips to off.</p></div>
+        </div>
+      </li>
+
+      <!-- ============ iOS ============ -->
+      <li class="phase" style="color:var(--violet)">
+        <span class="pin"></span>
+        <div class="phase-head"><h2 style="color:var(--text)">iPhone</h2><span class="chip later">Later</span></div>
+        <p>
+          The app already builds for iOS. What holds it back is that iOS will not let an
+          app listen in the background, and the only way to wake it is Apple's push
+          service.
+        </p>
+        <div class="items">
+          <div class="item"><h3>TestFlight beta <span class="chip later">Later</span></h3><p>A signed iOS build in the hands of testers, with calls through the standard iPhone call screen.</p></div>
+          <div class="item"><h3>A push service that stores nothing <span class="chip later">Later</span></h3><p>It sends an empty wake-up and forgets it. The phone then fetches and decrypts the message itself, so content never touches Apple or us. It will be optional, and it will be written up in the privacy document before it ships.</p></div>
+        </div>
+      </li>
+
+      <!-- ============ LATER ============ -->
+      <li class="phase" style="color:var(--violet)">
+        <span class="pin"></span>
+        <div class="phase-head"><h2 style="color:var(--text)">After that</h2><span class="chip later">Later</span></div>
+        <div class="items">
+          <div class="item"><h3>Calls that connect everywhere</h3><p>Calls on some mobile networks can't reach each other directly. Nodes will be able to offer a relay for them, and until then the app says why a call failed.</p></div>
+          <div class="item"><h3>More languages</h3><p>Slovak first, then whatever the people using it speak.</p></div>
+          <div class="item"><h3>Accessibility</h3><p>A full pass with TalkBack and VoiceOver over the map, chat and call screens.</p></div>
+          <div class="item"><h3>Polish</h3><p>A better image viewer, a tidier chat, faster startup, and backups that carry attachments.</p></div>
+        </div>
+      </li>
+
+    </ol>
+  </div>
+
+  <hr class="rule" style="margin-top:64px">
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">Not on the roadmap</p>
+        <h2>Things we have decided not to build.</h2>
+        <p>Some features would make DAB easier to grow and worse to trust.</p>
+      </div>
+      <ul class="nots">
+        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#f5b451" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg><span><b>A blockchain.</b> Nobody needs a permanent copy of a conversation that already lives on two phones. The network deletes messages once they are delivered; it doesn't record them.</span></li>
+        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#f5b451" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg><span><b>Accounts.</b> No email, no phone number, no sign-up. Your identity is a key on your phone.</span></li>
+        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#f5b451" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg><span><b>Analytics, ads or tracking SDKs.</b> Not now, not in a "free tier", not ever.</span></li>
+        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#f5b451" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg><span><b>Public profiles or a stranger map.</b> DAB stays friends-only. You appear only to the people you paired with.</span></li>
+      </ul>
+
+      <div class="note">
+        <p>This page describes intent, not promises. Until 1.0, DAB is alpha software that has not had a security review. The <a href="./#install">install notes</a> say what that means in practice.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>DAB — built for friends, not for scale.</span>
+    <nav>
+      <a href="./">Home</a>
+      <a href="https://github.com/Mild-Solvent/DAB">Source</a>
+      <a href="https://github.com/Mild-Solvent/DAB/releases">Releases</a>
+      <a href="https://github.com/Mild-Solvent/DAB/blob/main/PRIVACY.md">Privacy</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
