@@ -27,6 +27,7 @@
     font-family:ui-sans-serif,-apple-system,"Segoe UI",Roboto,Inter,Helvetica,Arial,sans-serif;
     font-size:17px; line-height:1.6; letter-spacing:-.005em;
     -webkit-font-smoothing:antialiased;
+    overflow-x:clip;
   }
   body::before{
     content:""; position:fixed; inset:0; pointer-events:none; z-index:0;
@@ -72,7 +73,7 @@
   .legend .mk{width:22px; height:22px}
 
   /* ---------- marks ---------- */
-  .mk{display:inline-grid; place-items:center; width:26px; height:26px; border-radius:50%; flex:none}
+  .mk{position:relative; display:inline-grid; place-items:center; width:26px; height:26px; border-radius:50%; flex:none}
   .mk svg{width:16px; height:16px}
   .y .mk, .mk.y{color:var(--green); background:rgba(52,211,153,.13)}
   .n .mk, .mk.n{color:var(--red); background:rgba(248,113,113,.12)}
@@ -81,7 +82,7 @@
   .sr{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
 
   /* ---------- matrix ---------- */
-  .scroller{overflow-x:auto; border:1px solid var(--line); border-radius:var(--radius);
+  .scroller{position:relative; overflow-x:auto; overscroll-behavior-x:contain; border:1px solid var(--line); border-radius:var(--radius);
     background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.012))}
   table{border-collapse:separate; border-spacing:0; width:100%; min-width:1080px; font-size:14.5px}
   thead th{position:sticky; top:0; z-index:3; background:#0b1f35; font-size:14.5px; font-weight:750;
@@ -99,10 +100,15 @@
   .us{background:rgba(47,107,255,.09)}
   thead th.us{background:#13305a; color:#fff}
   td.us em{color:var(--muted)}
-  tr.grp th{position:sticky; left:0; background:#0d2338; text-align:left; font-size:12.5px; font-weight:750;
-    letter-spacing:.10em; text-transform:uppercase; color:var(--blue2); padding:12px 20px;
+  tr.grp th{position:static; background:#0d2338; text-align:left; font-size:12.5px; font-weight:750;
+    letter-spacing:.10em; text-transform:uppercase; color:var(--blue2); padding:12px 0;
     border-top:1px solid var(--line)}
+  tr.grp th span{position:sticky; left:20px; padding:0 20px}
   .hint{color:var(--dim); font-size:13.5px; margin:12px 2px 0}
+  @media (max-width:1099px){
+    /* the table scrolls inside its own box, so the app names can stay pinned on top */
+    .scroller{overflow:auto; max-height:calc(100vh - 110px); max-height:calc(100svh - 110px)}
+  }
   @media (min-width:1100px){
     .hint{display:none}
     .scroller{overflow:visible}
@@ -151,7 +157,15 @@
     .head{padding:48px 0 28px}
     section{padding:48px 0}
     body{font-size:16.5px}
-    tbody th{width:190px; min-width:190px}
+    table{min-width:836px; font-size:13.5px}
+    thead th{padding:12px 6px; font-size:13px}
+    thead th:first-child{padding-left:12px; font-size:11px}
+    tbody th{width:132px; min-width:132px; padding:12px 10px 12px 12px}
+    tbody th small{font-size:11.5px}
+    td{padding:12px 4px; min-width:88px}
+    td em{font-size:11px}
+    tr.grp th{padding:10px 0; font-size:11px}
+    tr.grp th span{left:12px; padding:0 12px}
   }
 </style>
 </head>
@@ -191,7 +205,7 @@
     <table>
       <thead><tr><th scope="col">Feature</th><th scope="col" class="us">DAB</th><th scope="col">Signal</th><th scope="col">WhatsApp</th><th scope="col">Messenger</th><th scope="col">Telegram</th><th scope="col">Threema</th><th scope="col">Session</th><th scope="col">SimpleX</th></tr></thead>
       <tbody>
-      <tr class="grp"><th scope="rowgroup" colspan="9">Account &amp; identity</th></tr>
+      <tr class="grp"><th scope="rowgroup" colspan="9"><span>Account &amp; identity</span></th></tr>
       <tr>
         <th scope="row">Sign up without a phone number or email<small>Who you are to the service before you have said a word.</small></th>
         <td class="y us"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span><em>a keypair made on the phone</em></td>
@@ -225,7 +239,7 @@
         <td class="p"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 3.8a6.2 6.2 0 0 1 0 12.4z" fill="currentColor"/></svg><span class="sr">Partly</span></span><em>compare Account IDs by hand</em></td>
         <td class="y"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span><em>security code</em></td>
       </tr>
-      <tr class="grp"><th scope="rowgroup" colspan="9">Encryption</th></tr>
+      <tr class="grp"><th scope="rowgroup" colspan="9"><span>Encryption</span></th></tr>
       <tr>
         <th scope="row">Every message end-to-end encrypted<small>By default, with no setting to remember.</small></th>
         <td class="y us"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span><em>NIP-44, XChaCha20-Poly1305</em></td>
@@ -292,7 +306,7 @@
         <td class="y"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span><em>onion routing</em></td>
         <td class="p"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 3.8a6.2 6.2 0 0 1 0 12.4z" fill="currentColor"/></svg><span class="sr">Partly</span></span><em>private routing hides it from the recipient’s server</em></td>
       </tr>
-      <tr class="grp"><th scope="rowgroup" colspan="9">Infrastructure &amp; trust</th></tr>
+      <tr class="grp"><th scope="rowgroup" colspan="9"><span>Infrastructure &amp; trust</span></th></tr>
       <tr>
         <th scope="row">No company server in the middle<small>Whether one organisation has to keep running for you to talk.</small></th>
         <td class="y us"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span><em>open Nostr relays run by unrelated operators; each chat uses 3 of 6, rotating daily</em></td>
@@ -370,7 +384,7 @@
         <td class="y"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span><em>Pro optional</em></td>
         <td class="y"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
       </tr>
-      <tr class="grp"><th scope="rowgroup" colspan="9">Everyday messaging</th></tr>
+      <tr class="grp"><th scope="rowgroup" colspan="9"><span>Everyday messaging</span></th></tr>
       <tr>
         <th scope="row">Group chats</th>
         <td class="n us"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 6l8 8M14 6l-8 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span class="sr">No</span></span><em>one-to-one only</em></td>
