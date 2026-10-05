@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DAB compared — Signal, WhatsApp, Messenger, Telegram and more</title>
-<meta name="description" content="A feature-by-feature comparison of DAB with Signal, WhatsApp, Messenger, Telegram, Threema, Session and SimpleX: what DAB does better, and what it gives up.">
+<title>DAB compared — Signal, WhatsApp, Telegram, Briar and more</title>
+<meta name="description" content="A feature-by-feature comparison of DAB with Signal, WhatsApp, Messenger, Telegram, Threema, Session, SimpleX and Briar: what DAB does better, and what it gives up.">
 <meta name="theme-color" content="#061426">
 <link rel="icon" href="assets/app-icon.png">
 <meta property="og:title" content="DAB compared">
@@ -147,7 +147,7 @@
     .js tbody th:first-child{position:static}
     .js tbody th{width:50%; min-width:0}
     .js thead th:first-child{width:50%}
-    .js .c1,.js .c2,.js .c3,.js .c4,.js .c5,.js .c6,.js .c7{display:none}
+    .js .c1,.js .c2,.js .c3,.js .c4,.js .c5,.js .c6,.js .c7,.js .c8{display:none}
     table[data-vs="1"] .c1{display:table-cell}
     table[data-vs="2"] .c2{display:table-cell}
     table[data-vs="3"] .c3{display:table-cell}
@@ -155,6 +155,7 @@
     table[data-vs="5"] .c5{display:table-cell}
     table[data-vs="6"] .c6{display:table-cell}
     table[data-vs="7"] .c7{display:table-cell}
+    table[data-vs="8"] .c8{display:table-cell}
     .js td em{font-size:12px}
     .js .switch{margin-left:0}
   }
@@ -253,13 +254,13 @@
 
     <button type="button" class="switch" aria-pressed="false" id="details"><i></i>Show details</button>
     </div>
-    <div class="vs" role="group" aria-label="Compare DAB with"><span>DAB vs</span><button type="button" data-vs="1" aria-pressed="true">Signal</button><button type="button" data-vs="2" aria-pressed="false">WhatsApp</button><button type="button" data-vs="3" aria-pressed="false">Messenger</button><button type="button" data-vs="4" aria-pressed="false">Telegram</button><button type="button" data-vs="5" aria-pressed="false">Threema</button><button type="button" data-vs="6" aria-pressed="false">Session</button><button type="button" data-vs="7" aria-pressed="false">SimpleX</button></div>
+    <div class="vs" role="group" aria-label="Compare DAB with"><span>DAB vs</span><button type="button" data-vs="1" aria-pressed="true">Signal</button><button type="button" data-vs="2" aria-pressed="false">WhatsApp</button><button type="button" data-vs="3" aria-pressed="false">Messenger</button><button type="button" data-vs="4" aria-pressed="false">Telegram</button><button type="button" data-vs="5" aria-pressed="false">Threema</button><button type="button" data-vs="6" aria-pressed="false">Session</button><button type="button" data-vs="7" aria-pressed="false">SimpleX</button><button type="button" data-vs="8" aria-pressed="false">Briar</button></div>
 
     <div class="scroller">
     <table id="matrix" data-vs="1">
-      <thead><tr><th scope="col">Feature</th><th scope="col" class="c0 us">DAB</th><th scope="col" class="c1">Signal</th><th scope="col" class="c2">WhatsApp</th><th scope="col" class="c3">Messenger</th><th scope="col" class="c4">Telegram</th><th scope="col" class="c5">Threema</th><th scope="col" class="c6">Session</th><th scope="col" class="c7">SimpleX</th></tr></thead>
+      <thead><tr><th scope="col">Feature</th><th scope="col" class="c0 us">DAB</th><th scope="col" class="c1">Signal</th><th scope="col" class="c2">WhatsApp</th><th scope="col" class="c3">Messenger</th><th scope="col" class="c4">Telegram</th><th scope="col" class="c5">Threema</th><th scope="col" class="c6">Session</th><th scope="col" class="c7">SimpleX</th><th scope="col" class="c8">Briar</th></tr></thead>
       <tbody>
-      <tr class="grp"><th scope="rowgroup" colspan="9"><span>Account &amp; identity</span></th></tr>
+      <tr class="grp"><th scope="rowgroup" colspan="10"><span>Account &amp; identity</span></th></tr>
       <tr>
         <th scope="row">Sign up without a phone number or email<small>Who you are to the service before you have said a word.</small></th>
         <td class="y c0 us" title="a keypair made on the phone"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span><em>a keypair made on the phone</em></td>
@@ -270,6 +271,7 @@
         <td class="y c5" title="random Threema ID"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span><em>random Threema ID</em></td>
         <td class="y c6" title="Account ID from a recovery phrase"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span><em>Account ID from a recovery phrase</em></td>
         <td class="y c7" title="no user identifier of any kind"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span><em>no user identifier of any kind</em></td>
+        <td class="y c8" title="a nickname and a password, on the device"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span><em>a nickname and a password, on the device</em></td>
       </tr>
       <tr>
         <th scope="row">Nobody can look you up<small>Can a stranger, or the service, find you from a number or a name?</small></th>
@@ -281,6 +283,7 @@
         <td class="p c5" title="only if you link a number or email"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 3.8a6.2 6.2 0 0 1 0 12.4z" fill="currentColor"/></svg><span class="sr">Partly</span></span><em>only if you link a number or email</em></td>
         <td class="y c6" title="only via your Account ID"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span><em>only via your Account ID</em></td>
         <td class="y c7" title="only via a one-off invitation link"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span><em>only via a one-off invitation link</em></td>
+        <td class="y c8" title="contacts are added by QR code in person, or by swapping links"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span><em>contacts are added by QR code in person, or by swapping links</em></td>
       </tr>
       <tr>
         <th scope="row">Contact verification<small>Proof that the key you are talking to is really your friend.</small></th>
@@ -292,8 +295,9 @@
         <td class="y c5" title="three verification levels"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span><em>three verification levels</em></td>
         <td class="p c6" title="compare Account IDs by hand"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 3.8a6.2 6.2 0 0 1 0 12.4z" fill="currentColor"/></svg><span class="sr">Partly</span></span><em>compare Account IDs by hand</em></td>
         <td class="y c7" title="security code"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span><em>security code</em></td>
+        <td class="y c8" title="QR code in person; contacts added remotely cannot be verified later"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span><em>QR code in person; contacts added remotely cannot be verified later</em></td>
       </tr>
-      <tr class="grp"><th scope="rowgroup" colspan="9"><span>Encryption</span></th></tr>
+      <tr class="grp"><th scope="rowgroup" colspan="10"><span>Encryption</span></th></tr>
       <tr>
         <th scope="row">Every message end-to-end encrypted<small>By default, with no setting to remember.</small></th>
         <td class="y c0 us" title="NIP-44, XChaCha20-Poly1305"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span><em>NIP-44, XChaCha20-Poly1305</em></td>
@@ -304,6 +308,7 @@
         <td class="y c5"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
         <td class="y c6"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
         <td class="y c7"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
+        <td class="y c8"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
       </tr>
       <tr>
         <th scope="row">Forward secrecy<small>If your key is stolen tomorrow, can yesterday’s messages be read?</small></th>
@@ -315,6 +320,7 @@
         <td class="y c5" title="Ibex protocol"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span><em>Ibex protocol</em></td>
         <td class="n c6" title="single long-term key; v2 with forward secrecy is in alpha"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 6l8 8M14 6l-8 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span class="sr">No</span></span><em>single long-term key; v2 with forward secrecy is in alpha</em></td>
         <td class="y c7" title="double ratchet"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span><em>double ratchet</em></td>
+        <td class="y c8" title="transport keys rotate every time period"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span><em>transport keys rotate every time period</em></td>
       </tr>
       <tr>
         <th scope="row">Post-quantum protection<small>Protection against “record now, decrypt later” once quantum computers arrive.</small></th>
@@ -326,6 +332,7 @@
         <td class="n c5"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 6l8 8M14 6l-8 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span class="sr">No</span></span></td>
         <td class="plan c6" title="part of protocol v2"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.2" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="3 2.4"/></svg><span class="sr">Planned</span></span><em>part of protocol v2</em></td>
         <td class="y c7" title="hybrid post-quantum key exchange"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span><em>hybrid post-quantum key exchange</em></td>
+        <td class="n c8"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 6l8 8M14 6l-8 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span class="sr">No</span></span></td>
       </tr>
       <tr>
         <th scope="row">Who you talk to is hidden from the server<small>Not the words — the social graph: who, with whom, how often.</small></th>
@@ -337,10 +344,11 @@
         <td class="p c5" title="the server routes between Threema IDs"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 3.8a6.2 6.2 0 0 1 0 12.4z" fill="currentColor"/></svg><span class="sr">Partly</span></span><em>the server routes between Threema IDs</em></td>
         <td class="y c6" title="onion routing, no sender on the envelope"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span><em>onion routing, no sender on the envelope</em></td>
         <td class="y c7" title="no user IDs; each contact uses separate queues"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span><em>no user IDs; each contact uses separate queues</em></td>
+        <td class="y c8" title="there is no server; phones sync directly over Tor"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span><em>there is no server; phones sync directly over Tor</em></td>
       </tr>
       <tr>
         <th scope="row">Your IP is hidden from your contacts</th>
-        <td class="n c0 us" title="direct WebRTC links to every friend whenever the app is open"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 6l8 8M14 6l-8 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span class="sr">No</span></span><em>direct WebRTC links to every friend whenever the app is open</em></td>
+        <td class="p c0 us" title="DAB Messenger: only during a call; the map app: while open, for live location"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 3.8a6.2 6.2 0 0 1 0 12.4z" fill="currentColor"/></svg><span class="sr">Partly</span></span><em>DAB Messenger: only during a call; the map app: while open, for live location</em></td>
         <td class="y c1" title="calls can be forced through a relay"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span><em>calls can be forced through a relay</em></td>
         <td class="p c2" title="calls are peer-to-peer unless “protect IP address in calls” is on"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 3.8a6.2 6.2 0 0 1 0 12.4z" fill="currentColor"/></svg><span class="sr">Partly</span></span><em>calls are peer-to-peer unless “protect IP address in calls” is on</em></td>
         <td class="p c3" title="calls can be peer-to-peer"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 3.8a6.2 6.2 0 0 1 0 12.4z" fill="currentColor"/></svg><span class="sr">Partly</span></span><em>calls can be peer-to-peer</em></td>
@@ -348,6 +356,7 @@
         <td class="p c5" title="“always relay calls” setting"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 3.8a6.2 6.2 0 0 1 0 12.4z" fill="currentColor"/></svg><span class="sr">Partly</span></span><em>“always relay calls” setting</em></td>
         <td class="p c6" title="messages are onion-routed; calls are peer-to-peer"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 3.8a6.2 6.2 0 0 1 0 12.4z" fill="currentColor"/></svg><span class="sr">Partly</span></span><em>messages are onion-routed; calls are peer-to-peer</em></td>
         <td class="p c7" title="messages go via relays; calls can be peer-to-peer"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 3.8a6.2 6.2 0 0 1 0 12.4z" fill="currentColor"/></svg><span class="sr">Partly</span></span><em>messages go via relays; calls can be peer-to-peer</em></td>
+        <td class="y c8" title="internet connections run over Tor onion services"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span><em>internet connections run over Tor onion services</em></td>
       </tr>
       <tr>
         <th scope="row">Your IP is hidden from the network<small>Whether the servers that carry your messages learn your address.</small></th>
@@ -359,11 +368,12 @@
         <td class="n c5"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 6l8 8M14 6l-8 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span class="sr">No</span></span></td>
         <td class="y c6" title="onion routing"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span><em>onion routing</em></td>
         <td class="p c7" title="private routing hides it from the recipient’s server"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 3.8a6.2 6.2 0 0 1 0 12.4z" fill="currentColor"/></svg><span class="sr">Partly</span></span><em>private routing hides it from the recipient’s server</em></td>
+        <td class="y c8" title="Tor"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span><em>Tor</em></td>
       </tr>
-      <tr class="grp"><th scope="rowgroup" colspan="9"><span>Infrastructure &amp; trust</span></th></tr>
+      <tr class="grp"><th scope="rowgroup" colspan="10"><span>Infrastructure &amp; trust</span></th></tr>
       <tr>
         <th scope="row">No company server in the middle<small>Whether one organisation has to keep running for you to talk.</small></th>
-        <td class="y c0 us" title="open Nostr relays run by unrelated operators; each chat uses 3 of 6, rotating daily"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span><em>open Nostr relays run by unrelated operators; each chat uses 3 of 6, rotating daily</em></td>
+        <td class="y c0 us" title="open Nostr relays plus dab-nodes that anyone can run; each chat uses 3 of 6 relays, rotating daily"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span><em>open Nostr relays plus dab-nodes that anyone can run; each chat uses 3 of 6 relays, rotating daily</em></td>
         <td class="n c1"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 6l8 8M14 6l-8 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span class="sr">No</span></span></td>
         <td class="n c2"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 6l8 8M14 6l-8 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span class="sr">No</span></span></td>
         <td class="n c3"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 6l8 8M14 6l-8 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span class="sr">No</span></span></td>
@@ -371,10 +381,11 @@
         <td class="n c5" title="Swiss servers run by Threema"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 6l8 8M14 6l-8 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span class="sr">No</span></span><em>Swiss servers run by Threema</em></td>
         <td class="y c6" title="network of independently staked nodes"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span><em>network of independently staked nodes</em></td>
         <td class="p c7" title="default servers run by SimpleX, but any server works"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 3.8a6.2 6.2 0 0 1 0 12.4z" fill="currentColor"/></svg><span class="sr">Partly</span></span><em>default servers run by SimpleX, but any server works</em></td>
+        <td class="y c8" title="none at all; phones sync directly"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span><em>none at all; phones sync directly</em></td>
       </tr>
       <tr>
         <th scope="row">Run your own server</th>
-        <td class="plan c0 us" title="dab-node, a mailbox anyone can run — not wired into the app yet"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.2" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="3 2.4"/></svg><span class="sr">Planned</span></span><em>dab-node, a mailbox anyone can run — not wired into the app yet</em></td>
+        <td class="y c0 us" title="dab-node, one ~4 MB program; add it in Settings and your friends deliver to it"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span><em>dab-node, one ~4 MB program; add it in Settings and your friends deliver to it</em></td>
         <td class="n c1"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 6l8 8M14 6l-8 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span class="sr">No</span></span></td>
         <td class="n c2"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 6l8 8M14 6l-8 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span class="sr">No</span></span></td>
         <td class="n c3"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 6l8 8M14 6l-8 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span class="sr">No</span></span></td>
@@ -382,10 +393,11 @@
         <td class="p c5" title="OnPrem, for organisations"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 3.8a6.2 6.2 0 0 1 0 12.4z" fill="currentColor"/></svg><span class="sr">Partly</span></span><em>OnPrem, for organisations</em></td>
         <td class="p c6" title="run a node, with a token stake"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 3.8a6.2 6.2 0 0 1 0 12.4z" fill="currentColor"/></svg><span class="sr">Partly</span></span><em>run a node, with a token stake</em></td>
         <td class="y c7"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
+        <td class="y c8" title="Briar Mailbox, on a spare Android phone or Linux box"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span><em>Briar Mailbox, on a spare Android phone or Linux box</em></td>
       </tr>
       <tr>
         <th scope="row">Messages wiped from servers after delivery</th>
-        <td class="y c0 us" title="replaced with an empty tombstone on receipt; 7-day expiry as a backstop"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span><em>replaced with an empty tombstone on receipt; 7-day expiry as a backstop</em></td>
+        <td class="y c0 us" title="relays and dab-nodes replace it with an empty tombstone on receipt; 7-day expiry as a backstop"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span><em>relays and dab-nodes replace it with an empty tombstone on receipt; 7-day expiry as a backstop</em></td>
         <td class="y c1"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
         <td class="y c2"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
         <td class="n c3" title="history kept server-side in encrypted secure storage"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 6l8 8M14 6l-8 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span class="sr">No</span></span><em>history kept server-side in encrypted secure storage</em></td>
@@ -393,6 +405,7 @@
         <td class="y c5"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
         <td class="p c6" title="held on the swarm for up to 14 days"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 3.8a6.2 6.2 0 0 1 0 12.4z" fill="currentColor"/></svg><span class="sr">Partly</span></span><em>held on the swarm for up to 14 days</em></td>
         <td class="y c7"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
+        <td class="y c8" title="no server; a Mailbox deletes what it hands over"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span><em>no server; a Mailbox deletes what it hands over</em></td>
       </tr>
       <tr>
         <th scope="row">Open-source app<small>Can anyone read the code that runs on your phone?</small></th>
@@ -404,6 +417,7 @@
         <td class="y c5"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
         <td class="y c6"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
         <td class="y c7"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
+        <td class="y c8"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
       </tr>
       <tr>
         <th scope="row">Independent security audit</th>
@@ -415,6 +429,7 @@
         <td class="y c5"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
         <td class="y c6"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
         <td class="y c7"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
+        <td class="y c8" title="Cure53 (2017), Radically Open Security (2023)"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span><em>Cure53 (2017), Radically Open Security (2023)</em></td>
       </tr>
       <tr>
         <th scope="row">No ads, analytics or data business</th>
@@ -426,6 +441,7 @@
         <td class="y c5" title="paid app"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span><em>paid app</em></td>
         <td class="y c6"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
         <td class="y c7"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
+        <td class="y c8" title="non-profit"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span><em>non-profit</em></td>
       </tr>
       <tr>
         <th scope="row">Free</th>
@@ -437,8 +453,21 @@
         <td class="n c5" title="one-time purchase"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 6l8 8M14 6l-8 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span class="sr">No</span></span><em>one-time purchase</em></td>
         <td class="y c6" title="Pro optional"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span><em>Pro optional</em></td>
         <td class="y c7"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
+        <td class="y c8"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
       </tr>
-      <tr class="grp"><th scope="rowgroup" colspan="9"><span>Everyday messaging</span></th></tr>
+<tr>
+        <th scope="row">Works with no internet at all<small>Over Bluetooth, Wi-Fi or a memory card, during a blackout.</small></th>
+        <td class="n c0 us"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 6l8 8M14 6l-8 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span class="sr">No</span></span></td>
+        <td class="n c1"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 6l8 8M14 6l-8 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span class="sr">No</span></span></td>
+        <td class="n c2"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 6l8 8M14 6l-8 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span class="sr">No</span></span></td>
+        <td class="n c3"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 6l8 8M14 6l-8 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span class="sr">No</span></span></td>
+        <td class="n c4"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 6l8 8M14 6l-8 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span class="sr">No</span></span></td>
+        <td class="n c5"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 6l8 8M14 6l-8 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span class="sr">No</span></span></td>
+        <td class="n c6"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 6l8 8M14 6l-8 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span class="sr">No</span></span></td>
+        <td class="n c7"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 6l8 8M14 6l-8 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span class="sr">No</span></span></td>
+        <td class="y c8" title="Bluetooth, Wi-Fi and USB sticks or SD cards"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span><em>Bluetooth, Wi-Fi and USB sticks or SD cards</em></td>
+      </tr>
+      <tr class="grp"><th scope="rowgroup" colspan="10"><span>Everyday messaging</span></th></tr>
       <tr>
         <th scope="row">Group chats</th>
         <td class="n c0 us" title="one-to-one only"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 6l8 8M14 6l-8 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span class="sr">No</span></span><em>one-to-one only</em></td>
@@ -449,6 +478,7 @@
         <td class="y c5"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
         <td class="y c6"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
         <td class="y c7"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
+        <td class="y c8" title="private groups, forums and blogs"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span><em>private groups, forums and blogs</em></td>
       </tr>
       <tr>
         <th scope="row">Voice &amp; video calls</th>
@@ -460,6 +490,7 @@
         <td class="y c5"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
         <td class="p c6" title="beta"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 3.8a6.2 6.2 0 0 1 0 12.4z" fill="currentColor"/></svg><span class="sr">Partly</span></span><em>beta</em></td>
         <td class="y c7"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
+        <td class="n c8"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 6l8 8M14 6l-8 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span class="sr">No</span></span></td>
       </tr>
       <tr>
         <th scope="row">Calls connect on any network<small>Strict Wi-Fi and some carriers block direct connections.</small></th>
@@ -471,6 +502,7 @@
         <td class="y c5"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
         <td class="p c6"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 3.8a6.2 6.2 0 0 1 0 12.4z" fill="currentColor"/></svg><span class="sr">Partly</span></span></td>
         <td class="y c7"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
+        <td class="n c8" title="no calls"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 6l8 8M14 6l-8 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span class="sr">No</span></span><em>no calls</em></td>
       </tr>
       <tr>
         <th scope="row">Group calls</th>
@@ -482,6 +514,7 @@
         <td class="y c5"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
         <td class="n c6"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 6l8 8M14 6l-8 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span class="sr">No</span></span></td>
         <td class="n c7"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 6l8 8M14 6l-8 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span class="sr">No</span></span></td>
+        <td class="n c8"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 6l8 8M14 6l-8 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span class="sr">No</span></span></td>
       </tr>
       <tr>
         <th scope="row">Large files</th>
@@ -493,10 +526,11 @@
         <td class="y c5" title="100 MB"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span><em>100 MB</em></td>
         <td class="p c6" title="10 MB"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 3.8a6.2 6.2 0 0 1 0 12.4z" fill="currentColor"/></svg><span class="sr">Partly</span></span><em>10 MB</em></td>
         <td class="y c7" title="1 GB"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span><em>1 GB</em></td>
+        <td class="n c8" title="images only, no other files"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 6l8 8M14 6l-8 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span class="sr">No</span></span><em>images only, no other files</em></td>
       </tr>
       <tr>
         <th scope="row">Voice messages</th>
-        <td class="n c0 us"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 6l8 8M14 6l-8 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span class="sr">No</span></span></td>
+        <td class="y c0 us" title="up to 3 minutes"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span><em>up to 3 minutes</em></td>
         <td class="y c1"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
         <td class="y c2"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
         <td class="y c3"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
@@ -504,10 +538,11 @@
         <td class="y c5"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
         <td class="y c6"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
         <td class="y c7"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
+        <td class="n c8"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 6l8 8M14 6l-8 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span class="sr">No</span></span></td>
       </tr>
       <tr>
         <th scope="row">Reactions, replies &amp; edits</th>
-        <td class="n c0 us"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 6l8 8M14 6l-8 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span class="sr">No</span></span></td>
+        <td class="y c0 us"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
         <td class="y c1"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
         <td class="y c2"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
         <td class="y c3"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
@@ -515,10 +550,11 @@
         <td class="y c5"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
         <td class="p c6" title="no edits"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 3.8a6.2 6.2 0 0 1 0 12.4z" fill="currentColor"/></svg><span class="sr">Partly</span></span><em>no edits</em></td>
         <td class="y c7"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
+        <td class="n c8"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 6l8 8M14 6l-8 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span class="sr">No</span></span></td>
       </tr>
       <tr>
         <th scope="row">Typing indicators &amp; read receipts</th>
-        <td class="n c0 us" title="delivery is confirmed, nothing more"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 6l8 8M14 6l-8 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span class="sr">No</span></span><em>delivery is confirmed, nothing more</em></td>
+        <td class="y c0 us" title="both can be switched off"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span><em>both can be switched off</em></td>
         <td class="y c1"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
         <td class="y c2"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
         <td class="y c3"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
@@ -526,6 +562,7 @@
         <td class="y c5"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
         <td class="y c6"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
         <td class="y c7"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
+        <td class="p c8" title="delivery ticks only"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 3.8a6.2 6.2 0 0 1 0 12.4z" fill="currentColor"/></svg><span class="sr">Partly</span></span><em>delivery ticks only</em></td>
       </tr>
       <tr>
         <th scope="row">Disappearing messages</th>
@@ -537,6 +574,7 @@
         <td class="n c5"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 6l8 8M14 6l-8 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span class="sr">No</span></span></td>
         <td class="y c6"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
         <td class="y c7"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
+        <td class="y c8"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
       </tr>
       <tr>
         <th scope="row">Reliable notifications<small>When the app is closed.</small></th>
@@ -548,6 +586,7 @@
         <td class="y c5"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
         <td class="p c6" title="needs the optional push server"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 3.8a6.2 6.2 0 0 1 0 12.4z" fill="currentColor"/></svg><span class="sr">Partly</span></span><em>needs the optional push server</em></td>
         <td class="p c7" title="background service; push on iPhone"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 3.8a6.2 6.2 0 0 1 0 12.4z" fill="currentColor"/></svg><span class="sr">Partly</span></span><em>background service; push on iPhone</em></td>
+        <td class="p c8" title="only while both phones are online, or via a Mailbox; heavy on battery"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 3.8a6.2 6.2 0 0 1 0 12.4z" fill="currentColor"/></svg><span class="sr">Partly</span></span><em>only while both phones are online, or via a Mailbox; heavy on battery</em></td>
       </tr>
       <tr>
         <th scope="row">Phone + desktop at once</th>
@@ -559,6 +598,7 @@
         <td class="y c5"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
         <td class="y c6"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
         <td class="p c7" title="desktop links to the phone"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 3.8a6.2 6.2 0 0 1 0 12.4z" fill="currentColor"/></svg><span class="sr">Partly</span></span><em>desktop links to the phone</em></td>
+        <td class="p c8" title="Briar Desktop (beta) is a separate account"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 3.8a6.2 6.2 0 0 1 0 12.4z" fill="currentColor"/></svg><span class="sr">Partly</span></span><em>Briar Desktop (beta) is a separate account</em></td>
       </tr>
       <tr>
         <th scope="row">Move to a new phone</th>
@@ -570,6 +610,7 @@
         <td class="y c5" title="Threema Safe"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span><em>Threema Safe</em></td>
         <td class="p c6" title="recovery phrase restores the account, not all history"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 3.8a6.2 6.2 0 0 1 0 12.4z" fill="currentColor"/></svg><span class="sr">Partly</span></span><em>recovery phrase restores the account, not all history</em></td>
         <td class="p c7" title="export the database by hand"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 3.8a6.2 6.2 0 0 1 0 12.4z" fill="currentColor"/></svg><span class="sr">Partly</span></span><em>export the database by hand</em></td>
+        <td class="n c8" title="no backup; a lost phone is a lost account"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 6l8 8M14 6l-8 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span class="sr">No</span></span><em>no backup; a lost phone is a lost account</em></td>
       </tr>
       <tr>
         <th scope="row">iPhone</th>
@@ -581,6 +622,7 @@
         <td class="y c5"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
         <td class="y c6"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
         <td class="y c7"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
+        <td class="n c8"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 6l8 8M14 6l-8 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span class="sr">No</span></span></td>
       </tr>
       <tr>
         <th scope="row">Install from an app store</th>
@@ -592,6 +634,7 @@
         <td class="y c5"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
         <td class="y c6"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
         <td class="y c7"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span></td>
+        <td class="y c8" title="Google Play and F-Droid"><span class="mk"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr">Yes</span></span><em>Google Play and F-Droid</em></td>
       </tr>
       </tbody>
     </table>
@@ -621,8 +664,10 @@
             requests</b>.</p></div>
         <div class="card"><h3><span class="mk y"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>No company to fail you</h3>
           <p>Messages travel through free public Nostr relays run by unrelated operators — each chat uses
-            three of six, rotating daily, so no single operator holds a history. If one disappears the
-            others carry on, and <b>if we disappear, your chats keep working</b>.</p></div>
+            three of six, rotating daily, so no single operator holds a history — and through
+            <b>dab-nodes</b>: mailbox servers anyone can run, one ~4&nbsp;MB program. Run your own, add it in
+            Settings, and your friends start delivering to it. If one relay or node disappears the others
+            carry on, and <b>if we disappear, your chats keep working</b>.</p></div>
         <div class="card"><h3><span class="mk y"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Nothing stays on servers</h3>
           <p>A message is overwritten with an empty tombstone the moment your friend’s phone confirms it,
             with a 7-day expiry as a backstop. Disappearing messages expire on the relay too, not just on the
@@ -649,14 +694,15 @@
             message. If someone steals your phone’s key <i>and</i> has recorded your traffic, they can read it.
             Wiping relays on delivery shrinks that window; <b>it does not close it</b>. No post-quantum
             protection either.</p></div>
-        <div class="card"><h3><span class="mk n"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 6l8 8M14 6l-8 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span>Your friends see your IP</h3>
-          <p>To be fast without a server, DAB opens direct connections to every friend while the app is open,
-            so <b>each friend learns your network address</b>, and the relays see it too. On home Wi-Fi that
-            points at your household. A VPN fixes it; the big apps route through their own servers instead.</p></div>
+        <div class="card"><h3><span class="mk p"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 3.8a6.2 6.2 0 0 1 0 12.4z" fill="currentColor"/></svg></span>Your IP is not hidden</h3>
+          <p>For live location, the DAB map app opens direct connections to every friend while it is open,
+            so <b>each friend learns your network address</b>. DAB Messenger does not: friends see it only
+            during a call. Either way the relays and nodes see it — they never see who you are talking to,
+            but they see where you connect from. A VPN or Orbot fixes it; Briar and Session route through
+            onion networks instead.</p></div>
         <div class="card"><h3><span class="mk n"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 6l8 8M14 6l-8 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span>One-to-one only</h3>
-          <p>No group chats, no group calls, no voice messages, reactions, replies, edits, typing indicators or
-            read receipts. Everything the table marks red under <i>Everyday messaging</i> is
-            <b>something you will notice in the first week</b>.</p></div>
+          <p>Voice messages, reactions, replies, edits, typing indicators and read receipts arrived in 0.6.
+            <b>Group chats and group calls have not</b>: every conversation is between two phones.</p></div>
         <div class="card"><h3><span class="mk n"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 6l8 8M14 6l-8 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span>Calls and files have limits</h3>
           <p>With no relay server for media, calls fail on some strict networks — DAB says so instead of
             quietly routing you through a stranger’s server. Files stop at about 1.5&nbsp;MB, because every
@@ -665,10 +711,11 @@
           <p>Real push needs Google’s or Apple’s push servers, and a push server knows who is messaging whom.
             On Android DAB runs its own opt-in background listener instead; aggressive battery savers can still
             stop it. <b>On iPhone there is nothing that can wake a closed app.</b></p></div>
-        <div class="card"><h3><span class="mk n"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 6l8 8M14 6l-8 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span>Young, small, unaudited</h3>
-          <p>Android only, installed from an APK, one phone per identity, no desktop app. The source is not
-            public yet and <b>nobody independent has reviewed the security</b>. And your friends have to install
-            it too — WhatsApp’s three billion users are a feature DAB cannot copy.</p></div>
+        <div class="card"><h3><span class="mk n"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 6l8 8M14 6l-8 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span>No forward secrecy, no onion routing, unaudited</h3>
+          <p>These are the gaps that matter most for security, and they are the ones that cannot be closed by
+            adding a screen: a key ratchet, onion-routed requests to the nodes, and an outside review. All three
+            are on the roadmap. Meanwhile DAB is Android only, installed from an APK, one phone per identity, the
+            source is not public yet and <b>nobody independent has reviewed the security</b>.</p></div>
       </div>
 
       <div class="note">
@@ -676,6 +723,12 @@
           to know about it, yes — that is exactly what it is for. If you need groups, big files, an iPhone, or
           protection from a well-resourced adversary today, use <b>Signal</b>; if you need no phone number
           <i>and</i> that level of maturity, look at <b>SimpleX</b> or <b>Threema</b>.</p>
+        <p><b>DAB or Briar?</b> Briar is the stronger tool against surveillance today: forward secrecy, Tor for
+          everything, an audit, and it keeps working over Bluetooth with no internet at all. It pays for that with
+          no calls, images as the only files, battery drain, and messages that only move while both phones (or
+          a Briar Mailbox) are online — and since July 2026 it receives security fixes only. DAB delivers to
+          friends who are offline through relays and dab-nodes that hold ciphertext, does voice and video
+          calls, voice messages, reactions and edits, and is still being built.</p>
       </div>
     </div>
   </section>
